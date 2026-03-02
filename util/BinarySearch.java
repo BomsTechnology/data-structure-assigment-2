@@ -9,16 +9,15 @@ public class BinarySearch {
     private static <T extends Comparable<T>> int binarySearch(T[] arr, T key, int left, int right) {
 
         if (left > right) {
-            return -1; 
+            return -1; // not found
         }
 
         int mid = (left + right) / 2;
-
         int comparison = arr[mid].compareTo(key);
 
         if (comparison == 0) {
             
-            return findFirstOccurrence(arr, key, left, mid);
+            return findFirst(arr, key, left, mid);
         }
         else if (comparison > 0) {
             return binarySearch(arr, key, left, mid - 1);
@@ -28,14 +27,12 @@ public class BinarySearch {
         }
     }
 
-    private static <T extends Comparable<T>> int findFirstOccurrence(T[] arr, T key, int left, int foundIndex) {
+    private static <T extends Comparable<T>> int findFirst(T[] arr, T key, int left, int index) {
 
-        int firstIndex = foundIndex;
-
-        while (firstIndex > left && arr[firstIndex - 1].compareTo(key) == 0) {
-            firstIndex--;
+        while (index > left && arr[index - 1].compareTo(key) == 0) {
+            index--;
         }
 
-        return firstIndex;
+        return index;
     }
 }
