@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class CSVWriter {
 
-    public static <T> void writeToCSV(String fileName, T[] arr) {
+    public static <T> void write(String fileName, T[] arr) {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
 
@@ -15,10 +15,10 @@ public class CSVWriter {
                 writer.newLine();
             }
 
-            System.out.println("File successfully written: " + fileName);
+            System.out.println("File written successfully ► " + fileName);
 
         } catch (IOException e) {
-            System.out.println("Error writing file: " + fileName);
+            System.out.println("Error writing file ► " + fileName);
             e.printStackTrace();
         }
     }
